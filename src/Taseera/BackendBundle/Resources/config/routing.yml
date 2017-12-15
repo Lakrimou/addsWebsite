@@ -1,0 +1,11 @@
+taseera_backend_tuser_company:
+    resource: "@TaseeraBackendBundle/Resources/config/routing/tusercompany.yml"
+    prefix:   /tusercompany
+
+taseera_backend_tuser:
+    resource: "@TaseeraBackendBundle/Resources/config/routing/tuser.yml"
+    prefix:   /tuser
+
+taseera_backend_homepage:
+    path:     /
+    defaults: { _controller: TaseeraBackendBundle:Default:index }

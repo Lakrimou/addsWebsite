@@ -1,0 +1,19 @@
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+taseera_endpoint:
+    resource: "@TaseeraEndpointBundle/Resources/config/routing.yml"
+    prefix:   /
+
+taseera_frontend:
+    resource: "@TaseeraFrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+
+taseera_backend:
+    resource: "@TaseeraBackendBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

@@ -1,0 +1,141 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="layout-content">
+        <div class="layout-content-body">
+            <div class="title-bar">
+                <h1 class="title-bar-title">
+                    <span class="d-ib">المعلومات التي تخص الشركة {{ tUser.sUsername }} </span>
+              <span class="d-ib">
+                <a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body"
+                   data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right"
+                   data-toggle="tooltip">
+                  <span class="sr-only">Add to shortcut list</span>
+                </a>
+              </span>
+                </h1>
+                <!--<p class="title-bar-description">
+                    <small>You can personalize your dashboard by using <a href="widgets.html">widgets</a>.</small>
+                </p>-->
+            </div>
+            <div class="row gutter-xs">
+                <div class="col-xs-12">
+                    <div class="col-md-8">
+                        <div class="demo-form-wrapper">
+                            <table class="table table-responsive table-bordered table-striped table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>Id</th>
+                                    <td>{{ tUser.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dtregdate</th>
+                                    <td>{% if tUser.dtRegDate %}{{ tUser.dtRegDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dtmoddate</th>
+                                    <td>{% if tUser.dtModDate %}{{ tUser.dtModDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sname</th>
+                                    <td>{{ tUser.sName }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Susername</th>
+                                    <td>{{ tUser.sUsername }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Spassword</th>
+                                    <td>{{ tUser.sPassword }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ssecret</th>
+                                    <td>{{ tUser.sSecret }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Semail</th>
+                                    <td>{{ tUser.sEmail }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Swebsite</th>
+                                    <td>{{ tUser.sWebsite }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sphoneland</th>
+                                    <td>{{ tUser.sPhoneLand }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Sphonemobile</th>
+                                    <td>{{ tUser.sPhoneMobile }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Benabled</th>
+                                    <td>{% if tUser.bEnabled %}Yes{% else %}No{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Bactive</th>
+                                    <td>{% if tUser.bActive %}Yes{% else %}No{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Spasscode</th>
+                                    <td>{{ tUser.sPassCode }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Spassdate</th>
+                                    <td>{% if tUser.sPassDate %}{{ tUser.sPassDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Spassip</th>
+                                    <td>{{ tUser.sPassIp }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dcoordlat</th>
+                                    <td>{{ tUser.dCoordLat }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dcoordlong</th>
+                                    <td>{{ tUser.dCoordLong }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Bcompany</th>
+                                    <td>{% if tUser.bCompany %}Yes{% else %}No{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Iitems</th>
+                                    <td>{{ tUser.iItems }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Icomments</th>
+                                    <td>{{ tUser.iComments }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Dtaccessdate</th>
+                                    <td>{% if tUser.dtAccessDate %}{{ tUser.dtAccessDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                </tr>
+                                <tr>
+                                    <th>Saccessip</th>
+                                    <td>{{ tUser.sAccessIp }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <ul>
+                                <li>
+                                    <a href="{{ path('tuser_company_index') }}">Back to the list</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('tuser_company_edit', { 'id': tUser.id }) }}">Edit</a>
+                                </li>
+                                <li>
+                                    {{ form_start(delete_form) }}
+                                    <input type="submit" value="Delete">
+                                    {{ form_end(delete_form) }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

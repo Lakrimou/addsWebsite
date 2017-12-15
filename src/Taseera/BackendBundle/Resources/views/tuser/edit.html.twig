@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="layout-content">
+        <div class="layout-content-body">
+            <div class="title-bar">
+                <h1 class="title-bar-title">
+                    <span class="d-ib">تعديل المستخدم</span>
+              <span class="d-ib">
+                <a class="title-bar-shortcut" href="#" title="Add to shortcut list" data-container="body"
+                   data-toggle-text="Remove from shortcut list" data-trigger="hover" data-placement="right"
+                   data-toggle="tooltip">
+                  <span class="sr-only">Add to shortcut list</span>
+                </a>
+              </span>
+                </h1>
+                <!--<p class="title-bar-description">
+                    <small>You can personalize your dashboard by using <a href="widgets.html">widgets</a>.</small>
+                </p>-->
+            </div>
+            <div class="row gutter-xs">
+                <div class="col-xs-12">
+                    <div class="col-md-8">
+                        <div class="demo-form-wrapper">
+
+                            {{ form_start(edit_form) }}
+                            {{ form_widget(edit_form) }}
+                            <input type="submit" value="Edit"/>
+                            {{ form_end(edit_form) }}
+
+                            <ul>
+                                <li>
+                                    <a href="{{ path('tuser_index') }}">الرجوع الى القائمة</a>
+                                </li>
+                                <li>
+                                    {{ form_start(delete_form) }}
+                                    <input type="submit" value="Delete">
+                                    {{ form_end(delete_form) }}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

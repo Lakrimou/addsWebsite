@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tusers list</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Dtregdate</th>
+            <th>Dtmoddate</th>
+            <th>Sname</th>
+            <th>Susername</th>
+            <th>Spassword</th>
+            <th>Ssecret</th>
+            <th>Semail</th>
+            <th>Swebsite</th>
+            <th>Sphoneland</th>
+            <th>Sphonemobile</th>
+            <th>Benabled</th>
+            <th>Bactive</th>
+            <th>Spasscode</th>
+            <th>Spassdate</th>
+            <th>Spassip</th>
+            <th>Dcoordlat</th>
+            <th>Dcoordlong</th>
+            <th>Bcompany</th>
+            <th>Iitems</th>
+            <th>Icomments</th>
+            <th>Dtaccessdate</th>
+            <th>Saccessip</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tUser in tUsers %}
+            <tr>
+                <td><a href="{{ path('tuser_company_show', { 'id': tUser.id }) }}">{{ tUser.id }}</a></td>
+                <td>{% if tUser.dtRegDate %}{{ tUser.dtRegDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if tUser.dtModDate %}{{ tUser.dtModDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tUser.sName }}</td>
+                <td>{{ tUser.sUsername }}</td>
+                <td>{{ tUser.sPassword }}</td>
+                <td>{{ tUser.sSecret }}</td>
+                <td>{{ tUser.sEmail }}</td>
+                <td>{{ tUser.sWebsite }}</td>
+                <td>{{ tUser.sPhoneLand }}</td>
+                <td>{{ tUser.sPhoneMobile }}</td>
+                <td>{% if tUser.bEnabled %}Yes{% else %}No{% endif %}</td>
+                <td>{% if tUser.bActive %}Yes{% else %}No{% endif %}</td>
+                <td>{{ tUser.sPassCode }}</td>
+                <td>{% if tUser.sPassDate %}{{ tUser.sPassDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tUser.sPassIp }}</td>
+                <td>{{ tUser.dCoordLat }}</td>
+                <td>{{ tUser.dCoordLong }}</td>
+                <td>{% if tUser.bCompany %}Yes{% else %}No{% endif %}</td>
+                <td>{{ tUser.iItems }}</td>
+                <td>{{ tUser.iComments }}</td>
+                <td>{% if tUser.dtAccessDate %}{{ tUser.dtAccessDate|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ tUser.sAccessIp }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('tuser_company_show', { 'id': tUser.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('tuser_company_edit', { 'id': tUser.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tuser_company_new') }}">Create a new tUser</a>
+        </li>
+    </ul>
+
+{% endblock %}

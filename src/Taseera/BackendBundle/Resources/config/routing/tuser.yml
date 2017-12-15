@@ -1,0 +1,29 @@
+tuser_index:
+    path:     /
+    defaults: { _controller: "TaseeraBackendBundle:TUser:index" }
+    methods:  GET
+
+tuser_show:
+    path:     /{id}/show
+    defaults: { _controller: "TaseeraBackendBundle:TUser:show" }
+    methods:  GET
+
+tuser_new:
+    path:     /new
+    defaults: { _controller: "TaseeraBackendBundle:TUser:new" }
+    methods:  [GET, POST]
+
+tuser_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "TaseeraBackendBundle:TUser:edit" }
+    methods:  [GET, POST]
+
+tuser_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "TaseeraBackendBundle:TUser:delete" }
+    methods:  DELETE
+
+tuser_delete_user:
+    path:     /{id}/delete_user
+    defaults: { _controller: "TaseeraBackendBundle:TUser:deleteUser" }
+    methods:  GET

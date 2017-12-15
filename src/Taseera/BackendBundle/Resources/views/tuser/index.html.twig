@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="layout-content">
+        <div class="layout-content-body">
+            <div class="text-center m-b">
+                <h3 class="m-b-0">المستخدمين</h3>
+                <small>جميع المستخدمين المسجلين لدينا</small>
+            </div>
+            <div class="row gutter-xs">
+                <div class="col-xs-12">
+                    <div class="card">
+                        {% for flashMessage in app.session.flashbag.get('msg') %}
+                            <br><br>
+                            <div class='alert alert-success alert-dismissable arabe'>
+                                <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;
+                                </button>
+                                {{ flashMessage }}
+                            </div>
+
+                        {% endfor %}
+                        <div class="card-header">
+                            <div class="card-actions">
+                                <button type="button" class="card-action card-toggler" title="Collapse"></button>
+                                <button type="button" class="card-action card-reload" title="Reload"></button>
+                                <button type="button" class="card-action card-remove" title="Remove"></button>
+                            </div>
+                            <strong>قائمة المستخدمين</strong>
+                        </div>
+                        <div class="card-body">
+                            <table id="demo-datatables-responsive-2"
+                                   class="table table-bordered table-striped table-nowrap dataTable" cellspacing="0"
+                                   width="100%">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>الاسم</th>
+                                    <th>اسم المستخدم</th>
+                                    <th>الايميل</th>
+                                    <th>رقم الجوال</th>
+                                    <th class="text-center">عرض المعلومات</th>
+                                    <th class="text-center">تعديل</th>
+                                    <th class="text-center">حذف</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for tUser in tUsers %}
+                                    <tr>
+                                        <td><a href="{{ path('tuser_show', { 'id': tUser.id }) }}">{{ tUser.id }}</a>
+                                        </td>
+                                        <td>{{ tUser.sName }}</td>
+                                        <td>{{ tUser.sUsername }}</td>
+                                        <td>{{ tUser.sEmail }}</td>
+                                        <td>{{ tUser.sPhoneMobile }}</td>
+                                        <td class="text-center"><a href="{{ path('tuser_show', { 'id': tUser.id }) }}"><i class="btn btn-success icon icon-eye"></i></a></td>
+                                        <td class="text-center"><a href="{{ path('tuser_edit', { 'id': tUser.id }) }}"><i class="btn btn-primary icon icon-refresh"></i></a></td>
+                                        <td class="text-center">
+                                            <a href="#" id="remove-customer-{{ tUser.id }}"
+                                               data-toggle="modal" data-target="#confirm-delete-{{ tUser.id }}" class="btn btn-danger icon icon-remove">
+                                            {#<i class="btn btn-danger icon icon-remove"></i>#}</a></td>
+                                    </tr>
+
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul>
+        <li>
+            <a href="{{ path('tuser_new') }}">Create a new tUser</a>
+        </li>
+    </ul>
+    {% for tUser in tUsers %}
+        <div class="modal fade" id="confirm-delete-{{ tUser.id }}" tabindex="-1"
+             role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"
+                                aria-hidden="true">&times;
+                        </button>
+                        <h4 class="modal-title arabe" id="myModalLabel"> تأكيد الحذف </h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <p class="arabe">
+                            هل تريد حذف المستخدم :
+                            <br>
+                            <strong>
+                                {{ tUser.sUsername }}
+                            </strong>
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default"
+                                data-dismiss="modal">
+                            رجوع
+                        </button>
+                        <a href="{{ path('tuser_delete_user', { 'id': tUser.id }) }}"
+                           class="btn btn-danger arabe" id="btn-remove"> حذف</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
